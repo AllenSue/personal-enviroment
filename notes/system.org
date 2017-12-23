@@ -1,0 +1,104 @@
+* Update system
+  Do update when first install system and regularly (like weekly).
+
+  #+BEGIN_SRC shell -n
+    sudo apt update
+    sudo apt upgrade
+    sudo apt autoremove
+  #+END_SRC
+
+* Change user folder name from Chinese to English (optional)
+  Change folder name such as ~Downloads~ and ~Desktop~ in user home path from Chinese
+  to English when select Chinese as system install langurage.
+
+  #+BEGIN_SRC shell -n
+    export LANG=en_US
+    xdg-user-dirs-gtk-update
+  #+END_SRC
+
+  Push ~use new names~ button on popup window.
+
+  Then input shell command to set system langurage back to Chinese:
+
+  #+BEGIN_SRC shell -n
+    export LANG=zh_CN
+  #+END_SRC
+
+  When next login, select ~don't notify this message~ (something like this) and push
+  ~use old names~ button on popup window.
+
+* Change desktop system to GNOME 3 (optional)
+  Do this step if default desktop is Unity.
+
+** Install GNOME 3
+
+   #+BEGIN_SRC shell -n
+     sudo apt install gnome-shell
+     sudo apt install gnome-theme*
+     sudo apt install gnome-tweak-tool
+   #+END_SRC
+
+** Uninstall Unity
+
+   #+BEGIN_SRC shell -n
+     sudo apt-get -y --auto-remove purge unity
+     sudo apt-get -y --auto-remove purge unity-common
+     sudo apt-get -y --auto-remove purge unity-lens*
+     sudo apt-get -y --auto-remove purge unity-services
+     sudo apt-get -y --auto-remove purge unity-asset-pool
+   #+END_SRC
+
+** Install GDM 3
+
+   #+BEGIN_SRC shell -n
+     sudo apt install gdm3
+   #+END_SRC
+
+** Uninstall lightdm
+
+   #+BEGIN_SRC shell -n
+     sudo apt autoremove lightdm
+   #+END_SRC
+
+* Install themes
+** ARC
+   URL: https://github.com/horst3180/arc-theme
+
+   See details in URL.
+
+* Chinese Input
+** Sougou pinyin
+   URL: https://pinyin.sogou.com/
+
+* Fonts
+** Fonts in this repository
+   Copy ~fonts~ folder to user home path.
+
+   #+BEGIN_SRC shell -n
+     cp -r ~/personal-enviroment/fonts/ ~/.fonts
+   #+END_SRC
+
+** Source Code Pro
+   URL: https://github.com/adobe-fonts/source-code-pro
+
+   Need use release branch.
+
+   #+BEGIN_SRC shell -n
+     mkdir ~/.fonts/adobe-fonts
+     git clone https://github.com/adobe-fonts/source-code-pro.git -b release \
+         ~/.fonts/adobe-fonts/source-code-pro
+   #+END_SRC
+
+** Apply fonts
+   
+   #+BEGIN_SRC shell -n
+     sudo fc-cache -fv
+   #+END_SRC
+   
+* Time sync between Ubuntu and Windows
+
+  #+BEGIN_SRC shell -n
+    sudo apt install ntpdate
+    sudo ntpdate time.windows.com
+    sudo hwclock --localtime --systohc
+  #+END_SRC

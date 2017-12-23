@@ -1,0 +1,49 @@
+* Netease cloud music
+** Install
+   URL: http://music.163.com/
+
+** Known issues
+*** Version 1.1.0 in Ubuntu 17.10
+    Version 1.1.0 maybe could not open in Ubuntu 17.10
+
+**** Easy way
+     Modify ~/usr/share/applications/netease-cloud-music.desktop~ as super user.
+     Find variable ~EXEC~ , add ~--no-sandbox~ before ~%U~
+
+**** Rebuild package
+     I found this way on the internet, not have tested yet.
+
+     Setup tools:
+
+     #+BEGIN_SRC shell -n
+       sudo apt-get install build-essential debhelper make autoconf automake \
+            dpkg-dev fakeroot pbuilder gnupg
+     #+END_SRC
+
+     Make directories need after:
+
+     #+BEGIN_SRC shell -n
+       mkdir -P netease/DEBIAN
+       mkdir fix
+     #+END_SRC
+
+     Unpack:
+
+     #+BEGIN_SRC shell -n
+       dpkg -x netease-cloud-music_1.0.0_i386_ubuntu16.04.deb ./netease
+       dpkg -e netease-cloud-music_1.0.0_i386_ubuntu16.04.deb netease/DEBIAN/
+     #+END_SRC
+
+     Modify the control file ~netease/DEBIAN/control~, change ~libqt5libqgtk2~
+     to ~qt5-style-plugins~, then repack:
+
+     #+BEGIN_SRC shell -n
+       dpkg-deb -b netease/ fix/
+     #+END_SRC
+
+     Finally install:
+
+     #+BEGIN_SRC shell -n
+       sudo dpkg -i fix/netease-cloud-music_1.0.0_i386_ubuntu16.04.deb
+       sudo apt install -f
+     #+END_SRC

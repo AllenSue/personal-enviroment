@@ -1,0 +1,59 @@
+* Emacs
+** Downloads
+   See URL: http://www.gnu.org/software/emacs/
+
+** Install required libraries
+   Maybe some libraries' version are newer than shown below.
+
+   #+BEGIN_SRC shell -n
+     sudo apt install libtiff5-dev libgif-dev libjpeg-dev libpng16-dev libxpm-dev \
+          libxaw7-dev libtinfo-dev libxml2
+   #+END_SRC
+
+** Compile and install
+
+   #+BEGIN_SRC shell -n
+     ./configures
+     make
+     sudo make install
+   #+END_SRC
+
+** Install spacemacs
+   See URL: https://github.com/syl20bnr/spacemacs
+   Now develop branch is better.
+
+   #+BEGIN_SRC shell -n
+     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d/
+   #+END_SRC
+
+** Use personal configures
+   See URL: https://github.com/AllenSue/personal-spacemacs-config
+
+   #+BEGIN_SRC shell -n
+     git clone https://github.com/AllenSue/personal-spacemacs-config.git ~/.spacemacs.d
+   #+END_SRC
+
+* Git
+** Install
+
+  #+BEGIN_SRC shell -n
+    sudo apt install git
+  #+END_SRC
+
+** Set user
+
+  #+BEGIN_SRC shell -n
+    git config --global user.name "username"
+    git config --global user.email "useremail"
+  #+END_SRC
+
+* Develop tools
+** GNU global
+*** Install
+
+   #+BEGIN_SRC shell -n
+     sudo apt install global
+   #+END_SRC
+
+** YCMD
+   See URL: https://github.com/Valloric/ycmd for details.

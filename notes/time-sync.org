@@ -1,7 +1,0 @@
-* Time sync between Ubuntu and Windows
-
-  #+BEGIN_SRC shell -n
-    sudo apt install ntpdate
-    sudo ntpdate time.windows.com
-    sudo hwclock --localtime --systohc
-  #+END_SRC
