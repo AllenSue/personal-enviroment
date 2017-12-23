@@ -129,3 +129,24 @@
    #+BEGIN_SRC shell
      sudo fc-cache -fv
    #+END_SRC
+
+* 安装git
+  安装：
+  #+BEGIN_SRC shell
+    sudo apt install git
+  #+END_SRC
+
+  设置用户：
+  #+BEGIN_SRC shell
+    git config --global user.name "username"
+    git config --global user.email "useremail"
+  #+END_SRC
+
+* 开发工具
+** global
+   #+BEGIN_SRC shell
+     sudo apt install global
+   #+END_SRC
+
+** ycmd
+   https://github.com/Valloric/ycmd
